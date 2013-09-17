@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: DEGG CO Brand
+Plugin Name: Einstien Brand
 Plugin URI: http://degg.co
-Description: Degg Company, LLC branding.
+Description: Einstien Marketing Concepts branding.
 Version: 1.0
 Author: Travis Scheidegger
 Author URI: http://travisscheidegger.com
@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 function degg_thank_you($string) {
-    $string = '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://degg.co/">Degg Company, LLC</a>.' ) . '</span>';
+    $string = '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://einstienmarketingconcepts.com/">Einstien Marketing Concepts</a>.' ) . '</span>';
     return $string;
 }
 
@@ -81,9 +81,9 @@ function degg_admin_bar_menu($wp_admin_bar) {
     $wp_admin_bar->add_menu( array(
         'id'    => 'deggco',
         'title' => '<span class="deggco-icon"></span>',
-        'href'  => 'http://degg.co',
+        'href'  => 'http://einstienmarketingconcepts.com',
         'meta'  => array(
-            'title' => __('DEGG CO'),
+            'title' => __('Einstien Marketing Concepts'),
         ),
     ) );
 
@@ -92,7 +92,7 @@ function degg_admin_bar_menu($wp_admin_bar) {
             'parent' => 'deggco',
             'id'     => 'deggco-support',
             'title'  => __('Contact Support'),
-            'href'   => 'mailto:t@degg.co',
+            'href'   => 'mailto:chris@einstienmarketingconcepts.com',
         ) );
     }
     return $wp_admin_bar;
@@ -108,14 +108,14 @@ function degg_remove_help($old_help, $screen_id, $screen){
 add_filter('contextual_help', 'degg_remove_help', 999, 3);
 
 function degg_login_headerurl($url) {
-    $url = 'http://degg.co/';
+    $url = 'http://einstienmarketingconcepts.com';
     return $url;
 }
 
 add_filter('login_headerurl', 'degg_login_headerurl');
 
 function degg_login_headertitle($title) {
-    $title = 'Powered by Degg Company, LLC';
+    $title = 'Powered by Einstien Marketing Concepts';
     return $title;
 }
 

@@ -5,10 +5,10 @@
 #wpadminbar {
     #wp-admin-bar-deggco {
         .deggco-icon {
-            width: 130px;
+            width: 120px;
             display: block;
             height: 28px;
-            background: url(../img/DEGG_CO_Logo_w_Name_small.png) 0 0 no-repeat;
+            background: url(../img/EMC_Logo_small.png) 0 0 no-repeat;
         }
         &.hover {
             .deggco-icon {
@@ -21,11 +21,29 @@
 .login {
     h1 {
         a {
-            background-image: url(../img/DEGG_CO_Logo_w_Name.png);
+            background-image: url(../img/EMC_Logo.png);
             background-size: contain;
             width: auto;
+            height: 139px;
             margin-left: 9px;
             margin-bottom: 20px;
+        }
+    }
+}
+
+body {
+    &.mp6 {
+        #wpadminbar {
+            #wp-admin-bar-deggco {
+                .deggco-icon {
+                    background: url(../img/EMC_Logo_MP6_small.png) 0 0 no-repeat;
+                }
+                &.hover {
+                    .deggco-icon {
+                        background-position: 0 -28px;
+                    }
+                }
+            }
         }
     }
 }
