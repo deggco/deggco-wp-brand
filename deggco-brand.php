@@ -34,16 +34,20 @@ function degg_thank_you($string) {
 add_filter('admin_footer_text', 'degg_thank_you');
 
 function degg_admin_editor_styles() {
-  wp_enqueue_style('degg_admin_editor', plugin_dir_url( __FILE__ ) . '/assets/css/editor-role.css', false, null);
+  wp_enqueue_style('degg_admin_editor', plugin_dir_url( __FILE__ ) . 'assets/css/editor-role.css', false, null);
 }
 
 function degg_admin_styles() {
-  wp_enqueue_style('degg_admin', plugin_dir_url( __FILE__ ) . '/assets/css/admin.css', false, null);
+  wp_enqueue_style('degg_admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', false, null);
 }
 
-add_action('admin_print_styles', 'degg_admin_styles');
-add_action('wp_enqueue_scripts', 'degg_admin_styles');
-add_action('login_enqueue_scripts', 'degg_admin_styles');
+function degg_enqueue_style() {
+  if (is_admin_bar_showing()) add_action('wp_enqueue_scripts', 'degg_admin_styles');
+  add_action('admin_print_styles', 'degg_admin_styles');
+  add_action('login_enqueue_scripts', 'degg_admin_styles');
+}
+
+add_action('init', 'degg_enqueue_style');
 
 function degg_remove_notifications() {
     if (!current_user_can('edit_dashboard')) {
