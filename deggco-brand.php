@@ -25,25 +25,28 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 function degg_thank_you($string) {
-    $string = '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://degg.co/">Degg Company, LLC</a>.' ) . '</span>';
+    $string = '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://abramsadvertising.com/">Abrams</a>.' ) . '</span>';
     return $string;
 }
 
 add_filter('admin_footer_text', 'degg_thank_you');
 
 function degg_admin_editor_styles() {
-  wp_enqueue_style('degg_admin_editor', plugin_dir_url( __FILE__ ) . '/assets/css/editor-role.css', false, null);
+  wp_enqueue_style('degg_admin_editor', plugin_dir_url( __FILE__ ) . 'assets/css/editor-role.css', false, null);
 }
 
 function degg_admin_styles() {
-  wp_enqueue_style('degg_admin', plugin_dir_url( __FILE__ ) . '/assets/css/admin.css', false, null);
+  wp_enqueue_style('degg_admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css', false, null);
 }
 
-add_action('admin_print_styles', 'degg_admin_styles');
-add_action('wp_enqueue_scripts', 'degg_admin_styles');
-add_action('login_enqueue_scripts', 'degg_admin_styles');
+function degg_enqueue_style() {
+  if (is_admin_bar_showing()) add_action('wp_enqueue_scripts', 'degg_admin_styles');
+  add_action('admin_print_styles', 'degg_admin_styles');
+  add_action('login_enqueue_scripts', 'degg_admin_styles');
+}
+
+add_action('init', 'degg_enqueue_style');
 
 function degg_remove_notifications() {
     if (!current_user_can('edit_dashboard')) {
@@ -81,9 +84,9 @@ function degg_admin_bar_menu($wp_admin_bar) {
     $wp_admin_bar->add_menu( array(
         'id'    => 'deggco',
         'title' => '<span class="deggco-icon"></span>',
-        'href'  => 'http://degg.co',
+        'href'  => 'http://abramsadvertising.com',
         'meta'  => array(
-            'title' => __('DEGG CO'),
+            'title' => __('Abrams'),
         ),
     ) );
 
@@ -92,7 +95,7 @@ function degg_admin_bar_menu($wp_admin_bar) {
             'parent' => 'deggco',
             'id'     => 'deggco-support',
             'title'  => __('Contact Support'),
-            'href'   => 'mailto:t@degg.co',
+            'href'   => 'mailto:support@abramsadvertising.com',
         ) );
     }
     return $wp_admin_bar;
@@ -108,14 +111,14 @@ function degg_remove_help($old_help, $screen_id, $screen){
 add_filter('contextual_help', 'degg_remove_help', 999, 3);
 
 function degg_login_headerurl($url) {
-    $url = 'http://degg.co/';
+    $url = 'http://abramsadvertising.com/';
     return $url;
 }
 
 add_filter('login_headerurl', 'degg_login_headerurl');
 
 function degg_login_headertitle($title) {
-    $title = 'Powered by Degg Company, LLC';
+    $title = 'Powered by Abrams';
     return $title;
 }
 
