@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 function degg_thank_you($string) {
-    $string = '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://degg.co/">Degg Company, LLC</a>.' ) . '</span>';
-    return $string;
+  $string = '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://degg.co/">Degg Company, LLC</a>.' ) . '</span>';
+  return $string;
 }
 
 add_filter('admin_footer_text', 'degg_thank_you');
