@@ -1,0 +1,8 @@
+{
+  "name": "deggco/deggco-wp-brand",
+  "description": "Abrams brand for WordPress",
+  "type": "wordpress-muplugin",
+  "require" : {
+    "composer/installers": "~1.0"
+  }
+}
